@@ -7,9 +7,11 @@ const {categoriaActual, handleClickCategoria} = useRestaurante()
 const {id, nombre, icono} = categoria
 
   return (
+    
 <div onClick={() => handleClickCategoria(id)} 
 className={`${categoriaActual?.id === id ? "bg-yellow2-50" : ""}
 flex items-center gap-4 w-full p-5 border cursor-pointer hover:bg-yellow2-50 sticky`}>
+  
 <Image
 height={70}
 width={70}
