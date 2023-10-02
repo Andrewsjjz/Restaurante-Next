@@ -18,11 +18,9 @@ const [total, setTotal] = useState('')
 const router = useRouter()
 
 const ObtenerCategorias = async () => {
-    
     const {data} = await axios ("/api/categoria")
     setCategorias(data)
 }
-
 
 useEffect(() => {
     ObtenerCategorias()
@@ -35,16 +33,12 @@ useEffect(() =>{
 useEffect(() => {
     const montoTotal = pedido.reduce((total, producto) => (producto.precio * producto.cantidad)
     + total, 0)
-
     setTotal(montoTotal)
 }, [pedido])
-
-
 
 const handleClickCategoria = id => {
     const categoria = categorias.filter( cat => cat.id === id)
     setCategoriaActual(categoria[0])
-
     router.push('/')
 }
 
@@ -62,8 +56,8 @@ const handleAgregarPedido = ({categoriaId, ...producto}) => {
     
         //ACTUALIZAR PEDIDO
 
-        const pedidoActualizado = pedido.map(productoState => productoState.id === producto.id
-        ? producto : productoState)
+        const pedidoActualizado = pedido.map(productoState => productoState.id === 
+        producto.id ? producto : productoState)
         setPedido(pedidoActualizado)
         toast.info('Pedido Actualizado', {
             position: "top-center",
@@ -77,6 +71,7 @@ const handleAgregarPedido = ({categoriaId, ...producto}) => {
             });
 
     } else{
+        
         setPedido([...pedido, producto])
         toast.success('Pedido Añadido', {
             position: "top-center",
@@ -141,9 +136,7 @@ const confirmarPedido = useCallback(() => {
     } catch (error) {
         console.log(error)
     }
-
   }
-
 
     return (
         <RestauranteContext.Provider
@@ -166,7 +159,6 @@ const confirmarPedido = useCallback(() => {
                 handleVerificar
             }}
         >
-
             {children}
         </RestauranteContext.Provider>
     )
