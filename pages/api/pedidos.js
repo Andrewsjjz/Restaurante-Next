@@ -7,9 +7,11 @@ export default async function handler(req, res) {
     //Mostrar ordenes en otro panel 
 
     const ordenes = await prisma.orden.findMany({
+        
         where: {
             estado: false
         }
+        
     })
     res.status(200).json(ordenes)
 
@@ -19,10 +21,12 @@ export default async function handler(req, res) {
 
         const orden = await prisma.orden.create({
             data : {
+                
                 cliente: req.body.nombre,
                 fehca: req.body.fecha,
                 total: req.body.total,
                 pedido: req.body.pedido,
+                
             },
         })
         res.json (orden)
