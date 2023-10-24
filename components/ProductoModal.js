@@ -11,7 +11,6 @@ export default function ProductoModal() {
 
     useEffect (() => {
         if(pedido.some((pedidoState) => pedidoState.id === producto.id)){
-
             const productoEdicion = pedido.find((pedidoState) => pedidoState.id === producto.id)
             setEdicion(true)
             setCantidad(productoEdicion.cantidad)
@@ -21,7 +20,9 @@ export default function ProductoModal() {
 
     return (
         <div className='flex gap-4'>
+        
             <div className='md:w-1/3'>
+        
                 <Image
                     src={`/assest/${producto.imagen}.jpg`}
                     height={500}
